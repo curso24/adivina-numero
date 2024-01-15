@@ -35,6 +35,7 @@ main {
 
 .left {
   width: 52rem;
+  color: rgb(209, 210, 209);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,7 +58,7 @@ h1 {
 }
 
 .number {
-  background: #eee;
+  background: #7578a5;
   color: #333;
   font-size: 6rem;
   width: 15rem;
@@ -97,7 +98,7 @@ h1 {
 
 .btn {
   border: none;
-  background-color: #eee;
+  background-color: #d5f00a;
   color: #222;
   font-size: 2rem;
   font-family: inherit;

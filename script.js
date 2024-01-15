@@ -1,11 +1,15 @@
 // configurar la aplicación
 const mensajeInicial = 'Empieza a adivinar...'
-let score = 20
+const SCORE = 20
+//Variables de la aplicacion
+let score 
 let highScore = 0
-const secretNumber = Math.trunc(Math.random() * 20) + 1
+let secretNumber
+
+
 
 // seleccionar elementos del DOM
-const messageField = document.querySelector('.message')
+const messageField = window.document.querySelector('.message')
 const scoreField = document.querySelector('.score')
 const highScoreField = document.querySelector('.highscore')
 const secretNumberField = document.querySelector('.number')
@@ -14,9 +18,8 @@ const againButton = document.querySelector('.again')
 const guessNumberField = document.querySelector('.guess')
 
 // inicializar la aplicación
-messageField.textContent = mensajeInicial
-scoreField.textContent = score
-highScoreField.textContent = highScore
+initApp()
+
 
 
 // funcionalidad de la aplicación
@@ -45,6 +48,8 @@ checkButton.addEventListener('click', () => {
     checkButton.disabled = true
     // mostrar el número secreto
     secretNumberField.textContent = secretNumber
+    highScoreField.style.backgroundColor = 'yellow'
+    secretNumberField.style.width = '300px'
     // actualizar el highScore
     if(score>highScore){
       highScore = score
@@ -54,3 +59,42 @@ checkButton.addEventListener('click', () => {
 
   // compararlo con el secretNumber
 })
+
+function initApp() {
+//inicializamos score
+//FIXme:Errores de Scope
+score = SCORE
+scoreField.textContent = score
+//TODO:inicializamos highscore
+//Habría que leer algún almacenamiento, cookies
+
+//Inicializar el texto
+messageField.textContent = mensajeInicial
+
+//Inicializar el nº secreto
+
+highScoreField.textContent = highScore
+const secretNumber = Math.trunc(Math.random() * 20) + 1
+secretNumberField.texContent = '?'
+
+  
+
+
+
+//Inicializar el fondo de pantalla
+document.body.style.backgroundColor ='#222'
+highScoreField.style.backgroundColor = '#fff'
+secretNumberField.style.width = '150px'
+
+checkButton.disabled =false
+}
+
+
+againButton.addEventListener('click', initApp) 
+
+  
+
+
+
+
+

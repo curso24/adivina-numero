@@ -1,52 +1,36 @@
-@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
-
-* {
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');* {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
-}
-
-html {
+}html {
   font-size: 62.5%;
   box-sizing: border-box;
-}
-
-body {
+}body {
   font-family: 'Press Start 2P', sans-serif;
   color: #eee;
   background-color: #222;
-  /* background-color: #60b347; */
-}
-
-/* LAYOUT */
+  /* background-color: #60B347
+; */
+}/* LAYOUT */
 header {
   position: relative;
   height: 35vh;
   border-bottom: 7px solid #eee;
-}
-
-main {
+}main {
   height: 65vh;
   color: #eee;
   display: flex;
   align-items: center;
   justify-content: space-around;
-}
-
-.left {
+}.left {
   width: 52rem;
-  color: rgb(209, 210, 209);
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.right {
+}.right {
   width: 52rem;
   font-size: 2rem;
-}
-
-/* ELEMENTS STYLE */
+}/* ELEMENTS STYLE */
 h1 {
   font-size: 4rem;
   text-align: center;
@@ -55,11 +39,9 @@ h1 {
   top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.number {
-  background: #7578a5;
-  color: #333;
+}.number {
+  background: rgb(148, 202, 224);
+  color: hsl(288, 98%, 48%);
   font-size: 6rem;
   width: 15rem;
   padding: 3rem 0rem;
@@ -68,22 +50,16 @@ h1 {
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 50%);
-}
-
-.between {
+}.between {
   font-size: 1.4rem;
   position: absolute;
   top: 2rem;
   right: 2rem;
-}
-
-.again {
+}.again {
   position: absolute;
   top: 2rem;
   left: 2rem;
-}
-
-.guess {
+}.guess {
   background: none;
   border: 4px solid #eee;
   font-family: inherit;
@@ -94,27 +70,19 @@ h1 {
   text-align: center;
   display: block;
   margin-bottom: 3rem;
-}
-
-.btn {
+}.btn {
   border: none;
-  background-color: #d5f00a;
+  background-color: hsl(64, 100%, 51%);
   color: #222;
   font-size: 2rem;
   font-family: inherit;
   padding: 2rem 3rem;
   cursor: pointer;
-}
-
-.btn:hover {
+}.btn:hover {
   background-color: #ccc;
-}
-
-.message {
+}.message {
   margin-bottom: 8rem;
   height: 3rem;
-}
-
-.label-score {
+}.label-score {
   margin-bottom: 2rem;
 }

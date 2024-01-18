@@ -1,31 +1,25 @@
 // configurar la aplicación
 const mensajeInicial = 'Empieza a adivinar...'
-const SCORE = 20
-//Variables de la aplicacion
-let score 
-let highScore = 0
-let secretNumber
-
-
-
-// seleccionar elementos del DOM
-const messageField = window.document.querySelector('.message')
+const INIT_SCORE = 20
+const INIT_HIGH_SCORE = 0
+// variables de la aplicación
+let score
+let secretNumber // seleccionar elementos del DOM
+const messageField = document.querySelector('.message')
 const scoreField = document.querySelector('.score')
 const highScoreField = document.querySelector('.highscore')
 const secretNumberField = document.querySelector('.number')
 const checkButton = document.querySelector('.check')
 const againButton = document.querySelector('.again')
 const guessNumberField = document.querySelector('.guess')
-
 // inicializar la aplicación
 initApp()
-
-
-
-// funcionalidad de la aplicación
-
-// addEventListener es una función que recibe
-// como argumento otra función
+// intentar recuperar highScore de localStorage
+const storedHighScore = localStorage.getItem('highScore')
+if (storedHighScore) {
+  highScore = parseInt(storedHighScore)
+  highScoreField.textContent = highScore
+} // funcionalidad de la aplicación
 checkButton.addEventListener('click', () => {
   // obtener el valor del input
   const guessNumber = Number(guessNumberField.value)
@@ -40,61 +34,44 @@ checkButton.addEventListener('click', () => {
     // actualizar el score
     score--
     scoreField.textContent = score
-    messageField.textContent = 'Has acertado'
+    messageField.textContent = 'Te has quedado corto'
   } else {
-    // ha ganado...
     // cambiar fondo de pantalla
     document.body.style.backgroundColor = 'green'
     checkButton.disabled = true
+    // mostrar el mensaje
+    messageField.textContent = '¡Has acertado!'
     // mostrar el número secreto
     secretNumberField.textContent = secretNumber
-    highScoreField.style.backgroundColor = 'yellow'
+    secretNumberField.style.backgroundColor = 'yellow'
     secretNumberField.style.width = '300px'
-    // actualizar el highScore
-    if(score>highScore){
+    // actualizar el highScore y almacenarlo en localStorage
+    if (score > highScore) {
       highScore = score
       highScoreField.textContent = highScore
+      localStorage.setItem('highScore', highScore.toString())
     }
   }
-
-  // compararlo con el secretNumber
 })
-
 function initApp() {
-//inicializamos score
-//FIXme:Errores de Scope
-score = SCORE
-scoreField.textContent = score
-//TODO:inicializamos highscore
-//Habría que leer algún almacenamiento, cookies
-
-//Inicializar el texto
-messageField.textContent = mensajeInicial
-
-//Inicializar el nº secreto
-
-highScoreField.textContent = highScore
-const secretNumber = Math.trunc(Math.random() * 20) + 1
-secretNumberField.texContent = '?'
-
-  
-
-
-
-//Inicializar el fondo de pantalla
-document.body.style.backgroundColor ='#222'
-highScoreField.style.backgroundColor = '#fff'
-secretNumberField.style.width = '150px'
-
-checkButton.disabled =false
+  // inicializamos score
+  score = INIT_SCORE
+  scoreField.textContent = score
+  // leer el highscore del localStorage y si no está inicializarlo con INIT_HIGH_SCORE
+  highScore = INIT_HIGH_SCORE
+  const storedHighScore = localStorage.getItem('highScore')
+  if (storedHighScore) {
+    highScore = parseInt(storedHighScore)
+    highScoreField.textContent = highScore
+  } // inicializar el texto de inicio
+  messageField.textContent = mensajeInicial
+  // inicializar el número secreto
+  secretNumber = Math.trunc(Math.random() * 20) + 1
+  secretNumberField.textContent = '?'
+  // inicializar el aspecto visual de los elementos
+  document.body.style.backgroundColor = '#222'
+  secretNumberField.style.backgroundColor = '#fff'
+  secretNumberField.style.width = '150px'
+  checkButton.disabled = false
 }
-
-
-againButton.addEventListener('click', initApp) 
-
-  
-
-
-
-
-
+againButton.addEventListener('click', initApp)
